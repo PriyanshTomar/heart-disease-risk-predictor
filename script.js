@@ -14,31 +14,38 @@ document.getElementById('heartForm').addEventListener('submit', function (e) {
         return;
     }
 
-    // Basic risk calculation based on Indian context
+    // Risk calculation
     let riskScore = 0;
 
     // Age factor
-    if (age > 40 && age <= 50) riskScore += 5; // Moderate risk
-    if (age > 50) riskScore += 10; // Higher risk
+    if (age > 40 && age <= 50) riskScore += 5;
+    if (age > 50) riskScore += 10;
 
     // Cholesterol factor
-    if (cholesterol > 200 && cholesterol <= 240) riskScore += 5; // Borderline high
-    if (cholesterol > 240) riskScore += 10; // High cholesterol
+    if (cholesterol > 200 && cholesterol <= 240) riskScore += 5;
+    if (cholesterol > 240 && cholesterol <= 300) riskScore += 10;
+    if (cholesterol > 300) riskScore += 20; // Critical level
 
     // Blood Pressure factor
-    if (bloodPressure > 130 && bloodPressure <= 140) riskScore += 5; // Elevated BP
-    if (bloodPressure > 140) riskScore += 10; // Hypertension
+    if (bloodPressure > 130 && bloodPressure <= 140) riskScore += 5;
+    if (bloodPressure > 140 && bloodPressure <= 180) riskScore += 10;
+    if (bloodPressure > 180) riskScore += 20; // Critical level
 
     // Smoker factor
-    if (smoker) riskScore += 15; // Smoking significantly increases the risk
+    if (smoker) riskScore += 15;
 
     // Diabetes factor
-    if (diabetes) riskScore += 15; // Diabetes is a significant risk factor in India
+    if (diabetes) riskScore += 15;
 
-    // Determine risk level
+    // Ensure high-risk triggers for critical conditions
     let riskMessage = 'Low risk';
-    if (riskScore >= 20 && riskScore < 40) riskMessage = 'Moderate risk';
-    if (riskScore >= 40) riskMessage = 'High risk';
+    if (cholesterol > 300 || bloodPressure > 180) {
+        riskMessage = 'High risk';
+    } else if (riskScore >= 20 && riskScore < 40) {
+        riskMessage = 'Moderate risk';
+    } else if (riskScore >= 40) {
+        riskMessage = 'High risk';
+    }
 
     // Display result
     document.getElementById('result').textContent = `Your heart disease risk is: ${riskMessage}`;
