@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Risk Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Heart Disease Risk Calculator</h1>
+        <form id="heartForm">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required placeholder="Enter your age">
+            
+            <label for="cholesterol">Cholesterol Level (mg/dL):</label>
+            <input type="number" id="cholesterol" name="cholesterol" required placeholder="Enter cholesterol level">
+            
+            <label for="bloodPressure">Blood Pressure (mm Hg):</label>
+            <input type="number" id="bloodPressure" name="bloodPressure" required placeholder="Enter blood pressure">
+            
+            <label for="smoker">Smoker:</label>
+            <select id="smoker" name="smoker" required>
+                <option value="">-- Select --</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            
+            <label for="diabetes">Diabetes:</label>
+            <select id="diabetes" name="diabetes" required>
+                <option value="">-- Select --</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            
+            <button type="submit">Calculate Risk</button>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
